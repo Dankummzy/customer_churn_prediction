@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Churn Prediction Results</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Prediction Date</th>
+                    <th>TV Subscriber</th>
+                    <th>Movie Package Subscriber</th>
+                    <th>Subscription Age</th>
+                    <th>Bill Average</th>
+                    <th>Remaining Contract</th>
+                    <th>Service Failure Count</th>
+                    <th>Download Average</th>
+                    <th>Upload Average</th>
+                    <th>Download Over Limit</th>
+                    <th>Predicted Churn</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prediction in predictions %}
+                <tr>
+                    <td>{{ prediction.id }}</td>
+                    <td>{{ prediction.prediction_date }}</td>
+                    <td>{{ prediction.is_tv_subscriber }}</td>
+                    <td>{{ prediction.is_movie_package_subscriber }}</td>
+                    <td>{{ prediction.subscription_age }}</td>
+                    <td>{{ prediction.bill_avg }}</td>
+                    <td>{{ prediction.remaining_contract }}</td>
+                    <td>{{ prediction.service_failure_count }}</td>
+                    <td>{{ prediction.download_avg }}</td>
+                    <td>{{ prediction.upload_avg }}</td>
+                    <td>{{ prediction.download_over_limit }}</td>
+                    <td>{{ prediction.predicted_churn }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

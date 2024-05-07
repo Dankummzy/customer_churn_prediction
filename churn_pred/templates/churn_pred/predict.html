@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %}
+    Predict Churn
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <h2 class="mt-5 mb-4">Predict Churn</h2>
+            <form method="post" class="mb-4">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary mb-4">Predict</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
